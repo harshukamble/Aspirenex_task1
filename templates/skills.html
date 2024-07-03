@@ -1,0 +1,104 @@
+{% extends 'basic.html' %}
+{% load static %}
+
+{% block title %}Skills{% endblock title %}
+
+{% block stylecss %}
+<style>
+  /* Add custom styles here */
+  .skill-category {
+    margin-bottom: 30px;
+  }
+  .skill-category h3 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  .skill-list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .skill-item {
+    text-align: center;
+    margin: 10px;
+    width: 140px;
+  }
+  .skill-item img {
+    width: 100px; /* Adjust the width of the image */
+    height: 100px; /* Adjust the height of the image */
+    object-fit: cover; /* Ensures the image fills the defined dimensions */
+    border-radius: 50%; /* Rounded border for circular images */
+    border: 2px solid #fff; /* Optional: White border around the image */
+  }
+</style>
+{% endblock stylecss %}
+
+{% block body %}
+
+<section id="skills" class="skills section-bg">
+  <div class="container" data-aos="fade-up">
+
+    <div class="section-title">
+      <h2>Skills</h2>
+      <p>Here are some of the skills I've developed:</p>
+    </div>
+
+    <div class="skill-category"> 
+      <h3>Languages</h3>
+      <ul class="skill-list">
+        {% for language in skills.languages %}
+        <li class="skill-item">
+          <!-- Correct usage of static template tag -->
+          <img src="{% static 'assets/img/'|add:language.lower|add:'.png' %}" alt="{{ language }}">
+          <p>{{ language }}</p>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="skill-category">
+      <h3>Frameworks</h3>
+      <ul class="skill-list">
+        {% for framework in skills.frameworks %}
+        <li class="skill-item">
+          <!-- Correct usage of static template tag -->
+          <img src="{% static 'assets/img/'|add:framework.lower|add:'.png' %}" alt="{{ framework }}">
+          <p>{{ framework }}</p>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="skill-category">
+      <h3>Concepts</h3>
+      <ul class="skill-list">
+        {% for concept in skills.concepts %}
+        <li class="skill-item">
+          <!-- Correct usage of static template tag -->
+          <img src="{% static 'assets/img/'|add:concept.lower|add:'.png' %}" alt="{{ concept }}">
+          <p>{{ concept }}</p>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="skill-category">
+      <h3>Other</h3>
+      <ul class="skill-list">
+        {% for item in skills.other %}
+        <li class="skill-item">
+          <!-- Correct usage of static template tag -->
+          <img src="{% static 'assets/img/'|add:item.lower|add:'.png' %}" alt="{{ item }}">
+          <p>{{ item }}</p>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+  </div>
+</section><!-- End Skills Section -->
+
+{% endblock body %}

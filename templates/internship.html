@@ -1,0 +1,133 @@
+<!-- internship.html -->
+{% extends 'basic.html' %}
+{% load static %}
+
+{% block title %}Internship{% endblock title %}
+
+{% block stylecss %}
+<style>
+  /* Add custom styles here */
+  .internship-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    margin-bottom: 30px;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f8f9fa;
+  }
+  .internship-item img {
+    width: 200px; /* Adjust width for smaller screens */
+    height: auto; /* Ensure aspect ratio is maintained */
+    max-width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+  }
+  .internship-item:hover img {
+    transform: scale(1.1);
+  }
+  .internship-content {
+    flex: 1;
+    margin-left: 20px; /* Adjust spacing between image and content */
+  }
+  .internship-role {
+    font-size: 18px; /* Adjust font size for smaller screens */
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  .internship-dates {
+    font-style: italic;
+    color: #777;
+    margin-bottom: 10px;
+  }
+  .internship-company {
+    margin-bottom: 10px;
+  }
+  .internship-description {
+    margin-bottom: 10px;
+  }
+  .view-full-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .view-full-button:hover {
+    background-color: #0056b3;
+  }
+
+  @media (max-width: 768px) {
+    .internship-item {
+      flex-direction: column;
+      text-align: center;
+    }
+    .internship-item img {
+      margin-bottom: 15px;
+    }
+    .internship-content {
+      margin-left: 0;
+    }
+  }
+</style>
+{% endblock stylecss %}
+
+{% block body %}
+
+<section id="internship" class="internship section-bg">
+  <div class="container" data-aos="fade-up">
+
+    <div class="section-title">
+      <h2>Internship</h2>
+    </div>
+
+    <div class="internship-item" data-aos="zoom-in" data-aos-delay="100">
+      <img src="{% static 'assets/img/web_designer.png' %}" alt="Web Designer">
+      <div class="internship-content">
+        <div class="internship-role">Web Designer</div>
+        <div class="internship-dates">March 6, 2023 - May 5, 2023</div>
+        <div class="internship-company">Dnyanda Sustainable Engineering Solutions Private Limited, Pune</div>
+        <div class="internship-description">
+          <ul>
+            <li>Contributed to the revamp of the company website for Dnyanda Sustainable Engineering Solutions Private Limited during a two-month internship.</li>
+            <li>Utilized Figma for designing purposes, ensuring a user-friendly and visually appealing website interface.</li>
+            <li>Collaborated effectively with team members to implement innovative design solutions and meet project deadlines.</li>
+          </ul>
+        </div>
+        <button class="view-full-button" onclick="openFullImage('web_designer.png')">View Full</button>
+      </div>
+    </div>
+
+    <div class="internship-item" data-aos="zoom-in" data-aos-delay="100">
+      <img src="{% static 'assets/img/web_developer.png' %}" alt="Web Developer">
+      <div class="internship-content">
+        <div class="internship-role">Web Developer</div>
+        <div class="internship-dates">January 2023 - February 2023</div>
+        <div class="internship-company">Oasis Infobyte</div>
+        <div class="internship-description">
+          <ul>
+            <li>Developed a landing page, a portfolio website, and a temperature converter website using HTML and CSS as part of certification requirements.</li>
+            <li>Successfully completed all three tasks to obtain certification, demonstrating proficiency in web development fundamentals.</li>
+            <li>Thoroughly enjoyed the process of working on these tasks and further honing skills in HTML and CSS.</li>
+          </ul>
+        </div>
+        <button class="view-full-button" onclick="openFullImage('web_developer.png')">View Full</button>
+      </div>
+    </div>
+
+  </div>
+</section><!-- End Internship Section -->
+
+<script>
+function openFullImage(imagePath) {
+  var fullImagePath = "{% static 'assets/img/' %}" + imagePath;
+  window.open(fullImagePath, '_blank');
+}
+</script>
+
+{% endblock body %}

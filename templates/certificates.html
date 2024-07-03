@@ -1,0 +1,80 @@
+{% extends 'basic.html' %}
+{% load static %}
+
+{% block title %}Certificates{% endblock title %}
+
+{% block stylecss %}
+<style>
+  /* Add custom styles here */
+  .certificate-item {
+    text-align: center;
+    margin: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .certificate-item img {
+    max-width: 100%;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+  }
+  .certificate-item img:hover {
+    transform: scale(1.1);
+  }
+  .certificate-content {
+    padding: 10px;
+  }
+  .certificate-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .view-full-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px; /* Add margin to separate the button from the description */
+  }
+  .view-full-button:hover {
+    background-color: #0056b3;
+  }
+</style>
+{% endblock stylecss %}
+
+{% block body %}
+
+<section id="certificates" class="certificates section-bg">
+  <div class="container" data-aos="fade-up">
+
+    <div class="section-title">
+      <h2>Certificates</h2>
+    </div>
+
+    <div class="row">
+      {% for certificate in certificates %}
+      <div class="col-lg-4 col-md-6 mb-4" data-aos="zoom-in" data-aos-delay="100">
+        <div class="certificate-item">
+          <img src="{% static 'assets/img/'|add:certificate.image %}" alt="{{ certificate.title }}">
+          <div class="certificate-content">
+            <p class="certificate-title">{{ certificate.title }}</p>
+            <button class="view-full-button" onclick="openFullImage('{{ certificate.image }}')">View Full</button>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section><!-- End Certificates Section -->
+
+<script>
+function openFullImage(imagePath) {
+  // Assuming the full image path is in the static directory
+  var fullImagePath = "{% static 'assets/img/' %}" + imagePath;
+  window.open(fullImagePath, '_blank');
+}
+</script>
+
+{% endblock body %}

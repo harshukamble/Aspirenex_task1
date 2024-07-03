@@ -1,0 +1,97 @@
+<!-- achievements.html -->
+{% extends 'basic.html' %}
+{% load static %}
+
+{% block title %}Achievements{% endblock title %}
+
+{% block stylecss %}
+<style>
+  /* Add custom styles here */
+  .achievement-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    margin-bottom: 30px;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f8f9fa;
+  }
+  .achievement-item img {
+    width: 200px; /* Adjust width for smaller screens */
+    height: auto; /* Ensure aspect ratio is maintained */
+    max-width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+  }
+  .achievement-item:hover img {
+    transform: scale(1.1);
+  }
+  .achievement-content {
+    flex: 1;
+    margin-left: 20px; /* Adjust spacing between image and content */
+  }
+  .achievement-title {
+    font-size: 18px; /* Adjust font size for smaller screens */
+    margin-bottom: 10px;
+  }
+  .view-full-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .view-full-button:hover {
+    background-color: #0056b3;
+  }
+
+  @media (max-width: 768px) {
+    .achievement-item {
+      flex-direction: column;
+      text-align: center;
+    }
+    .achievement-item img {
+      margin-bottom: 15px;
+    }
+    .achievement-content {
+      margin-left: 0;
+    }
+  }
+</style>
+{% endblock stylecss %}
+
+{% block body %}
+
+<section id="achievements" class="achievements section-bg">
+  <div class="container" data-aos="fade-up">
+
+    <div class="section-title">
+      <h2>Achievements</h2>
+    </div>
+
+    {% for achievement in achievements %}
+    <div class="achievement-item" data-aos="zoom-in" data-aos-delay="100">
+      <img src="{% static 'assets/img/'|add:achievement.image %}" alt="{{ achievement.title }}">
+      <div class="achievement-content">
+        <div class="achievement-title">{{ achievement.title }}</div>
+        <button class="view-full-button" onclick="openFullImage('{{ achievement.image }}')">View Full</button>
+      </div>
+    </div>
+    {% endfor %}
+
+  </div>
+</section><!-- End Achievements Section -->
+
+<script>
+function openFullImage(imagePath) {
+  var fullImagePath = "{% static 'assets/img/' %}" + imagePath;
+  window.open(fullImagePath, '_blank');
+}
+</script>
+
+{% endblock body %}

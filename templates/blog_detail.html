@@ -1,0 +1,19 @@
+{% extends 'basic.html' %}
+{% block body %}
+  <section id="blog-detail" class="blog-detail">
+    <div class="container" data-aos="fade-up">
+      <div class="row">
+        <div class="col-lg-6">
+          <img src="{{ post.img.url }}" class="img-fluid" alt="{{ post.title }}">
+        </div>
+        <div class="col-lg-6">
+          <h2>{{ post.title }}</h2>
+          <p>{{ post.description }}</p>
+          <p>Author: {{ post.authname }}</p>
+          <p>Published on: {{ post.timeStamp }}</p>
+          <!-- Add any other details you want to display -->
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
