@@ -21,7 +21,7 @@ SECRET_KEY = 'django-insecure-y-it&0w78hf(9sk+7c_0vjfug$%sl*dk^_&-lehm20e-h-%e!z
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.vercel.app','.now.sh']
 
 
 
@@ -134,3 +134,7 @@ MESSAGE_TAGS={
 
 
 django_heroku.settings(locals())
+
+import os
+STATICFILES_DIRS=os.path.join(BASE_DIR, 'static'),
+STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles_build','static')
